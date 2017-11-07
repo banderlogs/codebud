@@ -13,8 +13,8 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
-import Camera from 'react-native-camera'
-import RNTesseractOcr from 'react-native-tesseract-ocr'
+import Camera from 'react-native-camera';
+import RNTesseractOcr from 'react-native-tesseract-ocr';
 
 export default class App extends Component<{}> {
   constructor(props) {
@@ -29,8 +29,6 @@ export default class App extends Component<{}> {
             this.camera = cam;
           }}
           style={styles.preview}
-          captureMode={Camera.constants.CaptureMode.video}
-          captureTarget={Camera.constants.CaptureTarget.disk}
           aspect={Camera.constants.Aspect.fill}>
           <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[SPARDE]</Text>
         </Camera>
@@ -43,14 +41,17 @@ export default class App extends Component<{}> {
     //options.location = ...
     this.camera.capture({metadata: options})
       .then(data => {
-        let { img_path } = data;
-        RNTesseractOcr.startOcr(img_path, 'LANG_ENGLISH')
+        let { path } = data;
+        console.log("Hey there niggah", data, path)
+        RNTesseractOcr.startOcr(path, 'LANG_ENGLISH')
           .then(result => {
             console.log('RESULT: ', result)
+          })
           .catch(err => {
-            console.log(err)
+            console.log("error: ", err)
           })
-          })
+          .done();
+        console.log("Hey there niggah2")
       })
       .catch(err => console.error(err));
   }
