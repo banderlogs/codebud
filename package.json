@@ -9,7 +9,8 @@
 	"dependencies": {
 		"react": "16.0.0",
 		"react-native": "0.50.0",
-		"react-native-camera": "^0.10.0"
+		"react-native-camera": "^0.10.0",
+		"react-native-tesseract-ocr": "^1.0.8"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

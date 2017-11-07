@@ -14,6 +14,7 @@ import {
   View
 } from 'react-native';
 import Camera from 'react-native-camera'
+import RNTesseractOcr from 'react-native-tesseract-ocr'
 
 export default class App extends Component<{}> {
   constructor(props) {
@@ -41,7 +42,16 @@ export default class App extends Component<{}> {
     const options = {};
     //options.location = ...
     this.camera.capture({metadata: options})
-      .then((data) => console.log(data))
+      .then(data => {
+        let { img_path } = data;
+        RNTesseractOcr.startOcr(img_path, 'LANG_ENGLISH')
+          .then(result => {
+            console.log('RESULT: ', result)
+          .catch(err => {
+            console.log(err)
+          })
+          })
+      })
       .catch(err => console.error(err));
   }
 }

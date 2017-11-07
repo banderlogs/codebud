@@ -3300,6 +3300,10 @@ react-native-camera@^0.10.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-tesseract-ocr@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-tesseract-ocr/-/react-native-tesseract-ocr-1.0.8.tgz#f2956124028ebf9a8a371a6ed20489e4b1591e9b"
+
 react-native@0.50.0:
   version "0.50.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.50.0.tgz#edc98470eaf729573b56307e22efe83044088fda"
