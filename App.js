@@ -42,18 +42,17 @@ export default class App extends Component<{}> {
     this.camera.capture({metadata: options})
       .then(data => {
         let { path } = data;
-        console.log("Hey there niggah", data, path)
-        RNTesseractOcr.startOcr(path, 'LANG_ENGLISH')
+        console.log("Hey there", data, path.slice(8))
+        RNTesseractOcr.startOcr(path.slice(7), 'LANG_ENGLISH')
           .then(result => {
-            console.log('RESULT: ', result)
+            console.log('RESULT: ', typeof(result), result)
           })
           .catch(err => {
-            console.log("error: ", err)
+            console.log("error tess: ", err)
           })
           .done();
-        console.log("Hey there niggah2")
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error("error cam: ", err));
   }
 }
 
